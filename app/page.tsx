@@ -410,33 +410,13 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-zinc-900 antialiased selection:bg-emerald-500/20 selection:text-emerald-900">
-      {/* 1. NAVBAR */}
       <Navbar />
 
       <main className="flex-1">
-        {/* ========================================== */}
-        {/* 2. HERO SECTION */}
-        {/* ========================================== */}
         <section className="relative overflow-hidden bg-white pt-10 pb-16 md:pt-16 md:pb-20 border-b border-zinc-100">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
-            {/* Top Status Pill / Badge */}
-            <div className="inline-flex items-center gap-2.5 rounded-full border border-emerald-200 bg-emerald-50/90 px-3.5 py-1.5 text-xs font-semibold text-emerald-900 mb-6 shadow-xs">
-              <div className="relative h-5 w-5 rounded-full bg-white border border-emerald-300 overflow-hidden shrink-0 p-0.5">
-                <Image
-                  src="/icon.png"
-                  alt="Blankshirt Icon"
-                  width={20}
-                  height={20}
-                  className="h-full w-full object-contain"
-                />
-              </div>
-              <span className="font-brand font-black tracking-wider">
-                BLANKSHIRT MALANG • PUSAT KAOS POLOS &amp; SABLON CUSTOM TERLENGKAP
-              </span>
-            </div>
 
-            {/* Main H1 Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-900 leading-[1.15] max-w-4xl mx-auto">
+            <h1 className="font-raleway text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-zinc-900 leading-[1.15] max-w-4xl mx-auto pt-5">
               Pusat Kaos Polos &amp; Sablon Custom Terlengkap di Malang - Blankshirt Malang
             </h1>
 

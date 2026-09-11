@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Source_Sans_3, Geist, Geist_Mono } from "next/font/google";
+import { Raleway, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const sourceSans = Source_Sans_3({
-  variable: "--font-source-sans",
+const raleway = Raleway({
+  variable: "--font-raleway",
   subsets: ["latin"],
-  weight: ["400", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 const geistSans = Geist({
@@ -41,7 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${sourceSans.variable} ${geistSans.variable} ${geistMono.variable} scroll-smooth antialiased`}
+      className={`${raleway.variable} ${geistSans.variable} ${geistMono.variable} scroll-smooth antialiased`}
     >
       <body className="min-h-full bg-white text-zinc-900 font-sans selection:bg-emerald-500/20 selection:text-emerald-900">
         {children}

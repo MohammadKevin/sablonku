@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-brand: var(--font-source-sans), sans-serif;
+  --font-brand: var(--font-raleway), sans-serif;
+  --font-heading: var(--font-raleway), sans-serif;
+  --font-raleway: var(--font-raleway), sans-serif;
 }
 
 @layer base {
@@ -12,7 +14,15 @@
 }
 
 .font-brand {
-  font-family: var(--font-source-sans), sans-serif;
+  font-family: var(--font-raleway), sans-serif;
+}
+
+.font-heading {
+  font-family: var(--font-raleway), sans-serif;
+}
+
+.font-raleway {
+  font-family: var(--font-raleway), sans-serif;
 }
 
 /* Subtle dot and grid patterns if needed for subtle texture */
