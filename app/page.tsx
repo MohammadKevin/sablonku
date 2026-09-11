@@ -416,24 +416,24 @@ export default function Home() {
         <section className="relative overflow-hidden bg-white pt-10 pb-16 md:pt-16 md:pb-20 border-b border-zinc-100">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
 
-            <h1 className="font-raleway text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-900 leading-[1.2] max-w-4xl mx-auto pt">
+            <h1 className="font-raleway text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-900 leading-[1.2] max-w-4xl mx-auto pt-8">
               Pusat Kaos Polos &amp; Sablon Custom Terlengkap di Malang <br className="hidden sm:inline" />
               <span className="font-semibold text-emerald-700">Blankshirt Malang</span>
             </h1>
 
-            <p className="mt-5 text-sm sm:text-base md:text-lg text-zinc-600 leading-relaxed max-w-3xl mx-auto font-normal">
+            <p className="mt-8 text-sm sm:text-base md:text-lg text-zinc-600 leading-relaxed max-w-3xl mx-auto font-normal">
               Pusat grosir &amp; eceran Cotton Combed (20s/24s/30s), kaos polos distro, dan jasa
               sablon custom di Kota Malang. Kualitas premium, jahitan rapi standar distro, tanpa
               minimum order hingga ribuan pcs dengan garansi kepuasan.
             </p>
 
             {/* Dual CTA Buttons */}
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-md mx-auto">
+            <div className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-lg mx-auto">
               <a
                 href="https://wa.me/628980080309?text=Halo%20Admin%20Blankshirt%20Malang,%20saya%20ingin%20order%20kaos%20polos%20dan%20sablon%20custom."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-6 py-3.5 text-sm font-bold text-white shadow-sm hover:bg-emerald-700 active:scale-95 transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full bg-emerald-600 px-7 py-3.5 text-sm font-bold text-white shadow-md shadow-emerald-600/20 hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-600/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all"
               >
                 <MessageCircle className="h-4 w-4" />
                 <span>Pesan Sekarang via WA</span>
@@ -441,9 +441,10 @@ export default function Home() {
 
               <a
                 href="#produk"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border-2 border-zinc-800 bg-white px-6 py-3.5 text-sm font-bold text-zinc-900 hover:bg-zinc-50 active:scale-95 transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-zinc-300 bg-white/90 px-6 py-3.5 text-sm font-bold text-zinc-800 hover:bg-zinc-100 hover:border-zinc-400 hover:text-zinc-950 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all shadow-xs"
               >
                 <span>Order Custom / Cek Pricelist</span>
+                <ArrowRight className="h-4 w-4 text-zinc-400" />
               </a>
             </div>
 
