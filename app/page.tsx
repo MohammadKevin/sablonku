@@ -32,6 +32,12 @@ import {
   Scissors,
   CheckCircle2,
 } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faShieldHalved,
+  faBoxesStacked,
+  faShop,
+} from "@fortawesome/free-solid-svg-icons";
 
 // ==========================================
 // DATA: PRODUCTS & SPECS
@@ -445,13 +451,11 @@ export default function Home() {
                 <ArrowRight className="h-4 w-4 text-zinc-400" />
               </a>
             </div>
-
-            {/* 3 Trust Cards Highlight Bar (Static Grid) */}
             <div className="mt-12 max-w-4xl mx-auto">
               <div className="rounded-2xl border border-zinc-200/90 bg-white p-3 sm:p-5 shadow-xs grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-zinc-100">
                 <div className="flex items-center justify-center gap-3 py-2 sm:py-1 px-3 text-left">
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100">
-                    <ShieldCheck className="h-4 w-4" />
+                    <FontAwesomeIcon icon={faShieldHalved} className="h-4 w-4" />
                   </div>
                   <div>
                     <h4 className="text-xs sm:text-sm font-bold text-zinc-900 leading-tight">
@@ -465,7 +469,7 @@ export default function Home() {
 
                 <div className="flex items-center justify-center gap-3 py-2 sm:py-1 px-3 text-left">
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100">
-                    <Sparkles className="h-4 w-4" />
+                    <FontAwesomeIcon icon={faBoxesStacked} className="h-3.5 w-3.5" />
                   </div>
                   <div>
                     <h4 className="text-xs sm:text-sm font-bold text-zinc-900 leading-tight">
@@ -479,7 +483,7 @@ export default function Home() {
 
                 <div className="flex items-center justify-center gap-3 py-2 sm:py-1 px-3 text-left">
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100">
-                    <MapPin className="h-4 w-4" />
+                    <FontAwesomeIcon icon={faShop} className="h-3.5 w-3.5" />
                   </div>
                   <div>
                     <h4 className="text-xs sm:text-sm font-bold text-zinc-900 leading-tight">
