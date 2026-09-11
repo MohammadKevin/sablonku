@@ -13,18 +13,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Atelier Konveksi & Sablon | Workshop Garment Apparel Custom Vendor Resmi",
+  title: "Blankshirt Malang (Kaos Polos Malang) - Pusat Kaos Polos & Sablon Custom Terlengkap di Malang",
   description:
-    "Pusat produksi custom apparel resmi: Kaos Combed, Polo Shirt Lacoste, Kemeja PDH Drill, dan Jaket Hoodie. Minimal order 24 pcs, gratis mockup digital, presisi bordir komputer dan sablon DTF/Plastisol bergaransi.",
+    "Blankshirt Malang: Pusat grosir & eceran Cotton Combed 20s/24s/30s, kaos polos distro, kaos oversize, dan jasa sablon custom DTF & plastisol terlengkap di Kota Malang.",
   keywords: [
-    "konveksi kaos",
-    "sablon dtf",
-    "sablon plastisol",
-    "kemeja pdh",
-    "kemeja drill",
-    "jaket hoodie custom",
-    "polo shirt custom",
-    "vendor konveksi indonesia",
+    "blankshirt malang",
+    "kaos polos malang",
+    "sablon kaos malang",
+    "cotton combed malang",
+    "kaos oversize malang",
+    "sablon dtf malang",
+    "grosir kaos polos malang",
   ],
 };
 
@@ -38,7 +37,7 @@ export default function RootLayout({
       lang="id"
       className={`${geistSans.variable} ${geistMono.variable} scroll-smooth antialiased`}
     >
-      <body className="min-h-full bg-zinc-50 text-zinc-900 font-sans selection:bg-amber-500/20 selection:text-amber-900">
+      <body className="min-h-full bg-white text-zinc-900 font-sans selection:bg-emerald-500/20 selection:text-emerald-900">
         {children}
       </body>
     </html>

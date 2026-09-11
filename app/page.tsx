@@ -1,29 +1,29 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ProductGrid from "@/components/ProductGrid";
-import FabricTechniqueMatrix from "@/components/FabricTechniqueMatrix";
+import ColorSection from "@/components/ColorSection";
 import SizeChartMatrix from "@/components/SizeChartMatrix";
-import PriceEstimator from "@/components/PriceEstimator";
-import WorkflowSection from "@/components/WorkflowSection";
-import FaqSection from "@/components/FaqSection";
+import ServicesSection from "@/components/ServicesSection";
+import WorkshopLocationSection from "@/components/WorkshopLocationSection";
+import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
-import StickyMobileCTA from "@/components/StickyMobileCTA";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-zinc-50 text-zinc-900">
+    <div className="min-h-screen flex flex-col bg-white text-zinc-900 antialiased selection:bg-emerald-500/20 selection:text-emerald-900">
       <Navbar />
       <main className="flex-1">
         <HeroSection />
         <ProductGrid />
-        <FabricTechniqueMatrix />
+        <ColorSection />
         <SizeChartMatrix />
-        <PriceEstimator />
-        <WorkflowSection />
-        <FaqSection />
+        <ServicesSection />
+        <WorkshopLocationSection />
+        <CTASection />
       </main>
       <Footer />
-      <StickyMobileCTA />
+      <FloatingWhatsApp />
     </div>
   );
 }

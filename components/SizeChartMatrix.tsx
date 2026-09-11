@@ -1,168 +1,192 @@
 "use client";
 
 import { useState } from "react";
-import { Ruler, Info, CheckCircle2 } from "lucide-react";
+import { MessageCircle, Ruler, Sparkles } from "lucide-react";
 
 interface SizeRow {
   size: string;
-  lebarDada: number;
-  panjangBaju: number;
-  panjangLengan: number;
-  rekomendasiTinggi: string;
-  rekomendasiBerat: string;
+  width: string;
+  length: string;
+  weight: string;
+  isJumbo?: boolean;
 }
 
-const regularFitData: SizeRow[] = [
-  { size: "S", lebarDada: 48, panjangBaju: 68, panjangLengan: 21, rekomendasiTinggi: "155 - 165 cm", rekomendasiBerat: "45 - 55 kg" },
-  { size: "M", lebarDada: 50, panjangBaju: 70, panjangLengan: 22, rekomendasiTinggi: "160 - 170 cm", rekomendasiBerat: "55 - 65 kg" },
-  { size: "L", lebarDada: 53, panjangBaju: 72, panjangLengan: 23, rekomendasiTinggi: "170 - 178 cm", rekomendasiBerat: "65 - 75 kg" },
-  { size: "XL", lebarDada: 56, panjangBaju: 75, panjangLengan: 24, rekomendasiTinggi: "175 - 183 cm", rekomendasiBerat: "75 - 85 kg" },
-  { size: "XXL", lebarDada: 59, panjangBaju: 78, panjangLengan: 25, rekomendasiTinggi: "180 - 190 cm", rekomendasiBerat: "85 - 95 kg" },
-  { size: "3XL", lebarDada: 62, panjangBaju: 80, panjangLengan: 26, rekomendasiTinggi: "185+ cm", rekomendasiBerat: "95+ kg" },
-];
-
-const oversizedFitData: SizeRow[] = [
-  { size: "S (Oversized)", lebarDada: 54, panjangBaju: 70, panjangLengan: 24, rekomendasiTinggi: "155 - 168 cm", rekomendasiBerat: "50 - 60 kg" },
-  { size: "M (Oversized)", lebarDada: 57, panjangBaju: 73, panjangLengan: 25, rekomendasiTinggi: "165 - 175 cm", rekomendasiBerat: "60 - 72 kg" },
-  { size: "L (Oversized)", lebarDada: 60, panjangBaju: 76, panjangLengan: 26, rekomendasiTinggi: "172 - 182 cm", rekomendasiBerat: "72 - 82 kg" },
-  { size: "XL (Oversized)", lebarDada: 64, panjangBaju: 79, panjangLengan: 27, rekomendasiTinggi: "178 - 188 cm", rekomendasiBerat: "82 - 95 kg" },
-  { size: "XXL (Oversized)", lebarDada: 68, panjangBaju: 82, panjangLengan: 28, rekomendasiTinggi: "185+ cm", rekomendasiBerat: "95+ kg" },
-];
-
 export default function SizeChartMatrix() {
-  const [fitType, setFitType] = useState<"regular" | "oversized">("regular");
+  const [activeTab, setActiveTab] = useState<"reguler" | "oversized">("reguler");
+  const [userWeight, setUserWeight] = useState<string>("");
+  const [recommendedSize, setRecommendedSize] = useState<string | null>(null);
 
-  const currentData = fitType === "regular" ? regularFitData : oversizedFitData;
+  const regularSizes: SizeRow[] = [
+    { size: "S", width: "47 cm", length: "67 cm", weight: "45 - 55 kg" },
+    { size: "M", width: "49 cm", length: "70 cm", weight: "55 - 65 kg" },
+    { size: "L", width: "52 cm", length: "72 cm", weight: "65 - 75 kg" },
+    { size: "XL", width: "54 cm", length: "75 cm", weight: "75 - 85 kg" },
+    { size: "XXL", width: "57 cm", length: "77 cm", weight: "85 - 95 kg" },
+    { size: "3XL (Jumbo)", width: "60 cm", length: "79 cm", weight: "> 95 kg", isJumbo: true },
+  ];
+
+  const oversizedSizes: SizeRow[] = [
+    { size: "M (Oversize)", width: "54 cm", length: "72 cm", weight: "50 - 65 kg" },
+    { size: "L (Oversize)", width: "57 cm", length: "75 cm", weight: "65 - 80 kg" },
+    { size: "XL (Oversize)", width: "61 cm", length: "78 cm", weight: "80 - 95 kg" },
+    { size: "XXL (Oversize)", width: "65 cm", length: "81 cm", weight: "> 95 kg", isJumbo: true },
+  ];
+
+  const currentSizes = activeTab === "reguler" ? regularSizes : oversizedSizes;
+
+  const calculateRecommendation = (wStr: string) => {
+    setUserWeight(wStr);
+    const w = parseFloat(wStr);
+    if (!w || isNaN(w)) {
+      setRecommendedSize(null);
+      return;
+    }
+
+    if (activeTab === "reguler") {
+      if (w < 55) setRecommendedSize("S");
+      else if (w < 65) setRecommendedSize("M");
+      else if (w < 75) setRecommendedSize("L");
+      else if (w < 85) setRecommendedSize("XL");
+      else if (w < 95) setRecommendedSize("XXL");
+      else setRecommendedSize("3XL (Jumbo)");
+    } else {
+      if (w < 65) setRecommendedSize("M (Oversize)");
+      else if (w < 80) setRecommendedSize("L (Oversize)");
+      else if (w < 95) setRecommendedSize("XL (Oversize)");
+      else setRecommendedSize("XXL (Oversize)");
+    }
+  };
+
+  const waSizeLink =
+    "https://wa.me/628980080309?text=Halo%20Admin%20Blankshirt%20Malang,%20saya%20ingin%20konsultasi%20panduan%20ukuran%20size%20chart%20kaos.";
 
   return (
-    <section id="size-chart" className="border-b border-zinc-200 bg-zinc-50 py-16 lg:py-24">
+    <section id="sizechart" className="bg-white py-16 md:py-24 border-b border-zinc-100">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded bg-amber-100 px-2.5 py-1 text-xs font-mono font-bold uppercase text-amber-800 mb-3">
-              <Ruler className="h-3.5 w-3.5" />
-              Standardized Dimension Guide
-            </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-900">
-              Size Chart &amp; Panduan Ukuran
-            </h2>
-            <p className="mt-2 text-sm sm:text-base text-zinc-600 max-w-2xl">
-              Pola potong standar Indonesia (Asian Fit) yang telah disesuaikan untuk kenyamanan postur tubuh saat aktivitas harian maupun kerja formal.
-            </p>
-          </div>
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <span className="inline-block text-xs font-bold uppercase tracking-wider text-emerald-600 mb-2">
+            PANDUAN UKURAN LENGKAP
+          </span>
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-zinc-900 tracking-tight">
+            Size Chart Kaos Polos Reguler
+          </h2>
+          <p className="mt-3 text-sm sm:text-base text-zinc-600 leading-relaxed">
+            Panduan ukuran standar lokal/internasional untuk memastikan kaos pas dan nyaman saat
+            dikenakan.
+          </p>
 
-          {/* Toggle Button */}
-          <div className="flex items-center rounded-lg bg-zinc-200/80 p-1 border border-zinc-300 shrink-0">
+          {/* Model Toggle: Reguler vs Oversize */}
+          <div className="mt-6 inline-flex items-center rounded-full bg-zinc-100 p-1 border border-zinc-200">
             <button
               type="button"
-              onClick={() => setFitType("regular")}
-              className={`rounded-md px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all ${
-                fitType === "regular"
-                  ? "bg-zinc-900 text-white shadow-xs"
+              onClick={() => {
+                setActiveTab("reguler");
+                if (userWeight) calculateRecommendation(userWeight);
+              }}
+              className={`rounded-full px-5 py-2 text-xs font-bold transition-all ${
+                activeTab === "reguler"
+                  ? "bg-white text-zinc-900 shadow-xs"
                   : "text-zinc-600 hover:text-zinc-900"
               }`}
             >
-              Regular Fit (Standard)
+              Pola Standar Reguler
             </button>
             <button
               type="button"
-              onClick={() => setFitType("oversized")}
-              className={`rounded-md px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all ${
-                fitType === "oversized"
-                  ? "bg-zinc-900 text-white shadow-xs"
+              onClick={() => {
+                setActiveTab("oversized");
+                if (userWeight) calculateRecommendation(userWeight);
+              }}
+              className={`rounded-full px-5 py-2 text-xs font-bold transition-all ${
+                activeTab === "oversized"
+                  ? "bg-white text-zinc-900 shadow-xs"
                   : "text-zinc-600 hover:text-zinc-900"
               }`}
             >
-              Oversized Fit (Drop Shoulder)
+              Pola Streetwear Oversized
             </button>
           </div>
         </div>
 
-        {/* Main Grid: Table & Measurement Visual */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Table */}
-          <div className="lg:col-span-8 overflow-x-auto rounded-xl border border-zinc-200 bg-white shadow-xs">
-            <table className="w-full text-left text-xs sm:text-sm border-collapse">
+        {/* Size Chart Card Container matching Reference Design */}
+        <div className="mx-auto max-w-4xl rounded-3xl border border-zinc-200/90 bg-white p-4 sm:p-8 shadow-xs">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-zinc-200 bg-zinc-100 font-mono text-[11px] uppercase tracking-wider text-zinc-600">
-                  <th className="py-3 px-4 sm:px-6">Size</th>
-                  <th className="py-3 px-4">Lebar Dada (A)</th>
-                  <th className="py-3 px-4">Panjang Baju (B)</th>
-                  <th className="py-3 px-4">Panjang Lengan (C)</th>
-                  <th className="py-3 px-4">Rekomendasi Postur</th>
+                <tr className="border-b border-zinc-200 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-zinc-600">
+                  <th className="pb-4 px-3 sm:px-6">Ukuran</th>
+                  <th className="pb-4 px-3 sm:px-6">Lebar Dada</th>
+                  <th className="pb-4 px-3 sm:px-6">Panjang Kaos</th>
+                  <th className="pb-4 px-3 sm:px-6">Rekomendasi BB</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-zinc-200 font-mono">
-                {currentData.map((row) => (
-                  <tr key={row.size} className="hover:bg-amber-50/50 transition-colors">
-                    <td className="py-3.5 px-4 sm:px-6 font-bold text-zinc-900 text-sm">
-                      <span className="inline-block rounded bg-zinc-900 text-amber-400 px-2.5 py-1 text-xs">
-                        {row.size}
-                      </span>
-                    </td>
-                    <td className="py-3.5 px-4 font-semibold text-zinc-800">
-                      {row.lebarDada} cm
-                    </td>
-                    <td className="py-3.5 px-4 font-semibold text-zinc-800">
-                      {row.panjangBaju} cm
-                    </td>
-                    <td className="py-3.5 px-4 text-zinc-600">
-                      {row.panjangLengan} cm
-                    </td>
-                    <td className="py-3.5 px-4 font-sans text-xs text-zinc-600">
-                      <div>{row.rekomendasiTinggi}</div>
-                      <div className="text-[11px] text-zinc-400">{row.rekomendasiBerat}</div>
-                    </td>
-                  </tr>
-                ))}
+              <tbody className="divide-y divide-zinc-100 text-xs sm:text-sm font-medium text-zinc-700">
+                {currentSizes.map((row, idx) => {
+                  const isHighlighted = recommendedSize === row.size;
+                  return (
+                    <tr
+                      key={idx}
+                      className={`transition-colors hover:bg-zinc-50/70 ${
+                        isHighlighted ? "bg-emerald-50/80 font-bold text-emerald-900" : ""
+                      }`}
+                    >
+                      <td className="py-3.5 px-3 sm:px-6 font-bold text-zinc-900 flex items-center gap-2">
+                        <span>{row.size}</span>
+                        {isHighlighted && (
+                          <span className="rounded-full bg-emerald-600 px-2 py-0.5 text-[10px] font-bold text-white">
+                            Cocok
+                          </span>
+                        )}
+                      </td>
+                      <td className="py-3.5 px-3 sm:px-6 text-zinc-700 font-mono">{row.width}</td>
+                      <td className="py-3.5 px-3 sm:px-6 text-zinc-700 font-mono">{row.length}</td>
+                      <td className="py-3.5 px-3 sm:px-6 text-zinc-700">{row.weight}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
+          </div>
 
-            <div className="p-4 border-t border-zinc-200 bg-zinc-50 flex items-center justify-between text-xs text-zinc-500 font-mono">
-              <span>* Toleransi jahit pola potong garment: ± 1.0 - 1.5 cm</span>
-              <span className="text-amber-800 font-semibold">Tersedia Custom Pola Khusus</span>
+          {/* Quick interactive Size Finder Assistant */}
+          <div className="mt-6 rounded-2xl bg-zinc-50 border border-zinc-200/70 p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div className="flex items-center gap-2.5 text-xs text-zinc-700">
+              <Ruler className="h-4 w-4 text-emerald-600 shrink-0" />
+              <span>
+                Cari rekomendasi ukuran cepat: masukkan berat badan Anda:
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <input
+                type="number"
+                placeholder="Contoh: 68"
+                value={userWeight}
+                onChange={(e) => calculateRecommendation(e.target.value)}
+                className="w-24 rounded-lg border border-zinc-300 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-900 focus:border-emerald-500 focus:outline-none"
+              />
+              <span className="text-xs font-medium text-zinc-500">kg</span>
+              {recommendedSize && (
+                <span className="ml-2 inline-flex items-center gap-1 rounded-full bg-emerald-600 px-2.5 py-1 text-xs font-bold text-white shadow-xs">
+                  <Sparkles className="h-3 w-3" />
+                  <span>Size {recommendedSize}</span>
+                </span>
+              )}
             </div>
           </div>
 
-          {/* How to Measure Sidebar */}
-          <div className="lg:col-span-4 rounded-xl border border-zinc-200 bg-white p-6 shadow-xs space-y-4">
-            <h3 className="font-bold text-zinc-900 text-base flex items-center gap-2">
-              <Ruler className="h-4 w-4 text-amber-600" />
-              Panduan Cara Mengukur
-            </h3>
-            
-            <div className="space-y-3 text-xs text-zinc-600 leading-relaxed">
-              <div className="border border-zinc-200 rounded-lg p-3 bg-zinc-50">
-                <strong className="text-zinc-900 block font-mono text-[11px] uppercase mb-1">
-                  (A) Lebar Dada:
-                </strong>
-                Bentangkan baju sampel Anda secara mendatar di permukaan datar. Ukur dari ujung jahitan ketiak kiri lurus ke ketiak kanan.
-              </div>
-
-              <div className="border border-zinc-200 rounded-lg p-3 bg-zinc-50">
-                <strong className="text-zinc-900 block font-mono text-[11px] uppercase mb-1">
-                  (B) Panjang Baju:
-                </strong>
-                Ukur dari titik tertinggi kerah bahu sebelah leher lurus ke bawah hingga ujung keliman bawah baju.
-              </div>
-
-              <div className="border border-zinc-200 rounded-lg p-3 bg-zinc-50">
-                <strong className="text-zinc-900 block font-mono text-[11px] uppercase mb-1">
-                  (C) Panjang Lengan:
-                </strong>
-                Ukur dari jahitan pangkal bahu terluar lurus ke ujung manset lengan.
-              </div>
-            </div>
-
-            <div className="rounded-lg bg-amber-50 border border-amber-200 p-3">
-              <div className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-amber-700 mt-0.5 shrink-0" />
-                <p className="text-[11px] text-amber-900 leading-snug">
-                  <strong>Punya standar size chart sendiri?</strong> Tim konveksi kami bisa mengikuti sampel fisik (spec chart) yang dikirim dari klien.
-                </p>
-              </div>
-            </div>
+          {/* Bottom Footnote matching screenshot */}
+          <div className="mt-5 pt-4 border-t border-zinc-100 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left text-xs text-zinc-500">
+            <p>* Toleransi ukuran 1 - 2 cm karena proses potong dan jahit massal.</p>
+            <a
+              href={waSizeLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-emerald-600 hover:text-emerald-700 hover:underline flex items-center gap-1"
+            >
+              <span>Butuh ukuran custom atau konsultasi size? Chat Kami</span>
+              <span>&rarr;</span>
+            </a>
           </div>
         </div>
       </div>
