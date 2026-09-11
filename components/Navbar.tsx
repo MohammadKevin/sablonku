@@ -21,7 +21,6 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-zinc-200/80 bg-white/95 backdrop-blur-md transition-all">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-18">
-        {/* Brand Logo & Name */}
         <a href="#" className="flex items-center gap-3 group">
           <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-white border border-zinc-200 overflow-hidden shadow-xs group-hover:border-emerald-500 transition-all p-1">
             <Image
@@ -34,11 +33,8 @@ export default function Navbar() {
             />
           </div>
           <div className="flex flex-col">
-            <span className="font-extrabold tracking-tight text-zinc-900 text-sm sm:text-base leading-tight">
+            <span className="font-brand font-black tracking-wider text-zinc-900 text-sm sm:text-base leading-tight">
               BLANKSHIRT MALANG
-            </span>
-            <span className="text-[10px] font-semibold text-emerald-600 tracking-wider uppercase">
-              Pusat Kaos Polos &amp; Sablon Custom
             </span>
           </div>
         </a>

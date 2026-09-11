@@ -24,7 +24,7 @@ export default function Footer() {
                 />
               </div>
               <div className="flex flex-col">
-                <span className="font-extrabold tracking-tight text-zinc-900 text-base">
+                <span className="font-brand font-black tracking-wider text-zinc-900 text-base uppercase">
                   Blankshirt Malang
                 </span>
                 <span className="text-[11px] font-semibold text-emerald-700">

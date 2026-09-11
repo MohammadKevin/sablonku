@@ -1,10 +1,18 @@
 @import "tailwindcss";
 
+@theme {
+  --font-brand: var(--font-source-sans), sans-serif;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
   }
+}
+
+.font-brand {
+  font-family: var(--font-source-sans), sans-serif;
 }
 
 /* Subtle dot and grid patterns if needed for subtle texture */
