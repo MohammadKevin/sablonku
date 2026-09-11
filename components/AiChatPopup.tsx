@@ -11,7 +11,6 @@ import {
   User,
   RotateCcw,
   ExternalLink,
-  CheckCircle2,
 } from "lucide-react";
 
 export interface ChatMessage {
@@ -158,6 +157,7 @@ export default function AiChatPopup({
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const initializedTopicRef = useRef<string | null>(null);
+  const msgCounterRef = useRef<number>(1);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -174,10 +174,10 @@ export default function AiChatPopup({
     if (isOpen && initialTopic && initialTopic !== initializedTopicRef.current) {
       initializedTopicRef.current = initialTopic;
       const userMsg: ChatMessage = {
-        id: `user-${Date.now()}`,
+        id: `user-${msgCounterRef.current++}`,
         sender: "user",
         text: `Halo, saya tertarik dengan stok kaos warna ${initialTopic}. Apakah ready stock?`,
-        time: new Date().toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit" }),
+        time: "Sekarang",
       };
 
       setMessages((prev) => [...prev, userMsg]);
@@ -186,10 +186,10 @@ export default function AiChatPopup({
       const timer = setTimeout(() => {
         const reply = generateBotReply(`warna ${initialTopic}`);
         const botMsg: ChatMessage = {
-          id: `bot-${Date.now()}`,
+          id: `bot-${msgCounterRef.current++}`,
           sender: "bot",
           text: reply.text,
-          time: new Date().toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit" }),
+          time: "Sekarang",
           actionUrl: reply.actionUrl,
           actionLabel: reply.actionLabel,
           quickReplies: reply.quickReplies,
@@ -206,16 +206,11 @@ export default function AiChatPopup({
     const query = (textToSend || inputVal).trim();
     if (!query) return;
 
-    const timeNow = new Date().toLocaleTimeString("id-ID", {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-
     const userMsg: ChatMessage = {
-      id: `user-${Date.now()}`,
+      id: `user-${msgCounterRef.current++}`,
       sender: "user",
       text: query,
-      time: timeNow,
+      time: "Sekarang",
     };
 
     setMessages((prev) => [...prev, userMsg]);
@@ -225,13 +220,10 @@ export default function AiChatPopup({
     setTimeout(() => {
       const reply = generateBotReply(query);
       const botMsg: ChatMessage = {
-        id: `bot-${Date.now()}`,
+        id: `bot-${msgCounterRef.current++}`,
         sender: "bot",
         text: reply.text,
-        time: new Date().toLocaleTimeString("id-ID", {
-          hour: "2-digit",
-          minute: "2-digit",
-        }),
+        time: "Sekarang",
         actionUrl: reply.actionUrl,
         actionLabel: reply.actionLabel,
         quickReplies: reply.quickReplies,

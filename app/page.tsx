@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AiChatPopup from "@/components/AiChatPopup";
@@ -9,7 +8,6 @@ import {
   MessageCircle,
   MessageSquare,
   ArrowRight,
-  ShieldCheck,
   Sparkles,
   MapPin,
   Check,
@@ -24,7 +22,6 @@ import {
   ExternalLink,
   Truck,
   PhoneCall,
-  Phone,
   Calculator,
   Copy,
   ChevronDown,
@@ -236,23 +233,6 @@ const fabricComparison = [
   },
 ];
 
-const printTechniques = [
-  {
-    name: "Sablon DTF (Direct Transfer Film) High-Res",
-    durability: "Sangat Tahan Cuci",
-    resolution: "Hingga 300 DPI (Foto & Gradasi)",
-    moq: "Bisa Satuan (No MOQ)",
-    desc: "Metode cetak digital modern dengan lem hotmelt elastis. Warna sangat cerah, detail gradasi foto tertransfer sempurna tanpa batasan warna.",
-  },
-  {
-    name: "Sablon Plastisol Curing",
-    durability: "Standar Distro Terkuat",
-    resolution: "Warna Solid Tajam & Pekat",
-    moq: "Mulai 24 Pcs",
-    desc: "Tinta berbasis minyak (oil based) yang dikeringkan dengan mesin curing suhu 160°C. Sangat awet bertahun-tahun, elastis, dan tidak mudah pecah.",
-  },
-];
-
 // ==========================================
 // DATA: PRICE ESTIMATOR CONFIG
 // ==========================================
@@ -410,13 +390,6 @@ export default function Home() {
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-  };
-
-  const waColorLink = (colorName?: string) => {
-    const text = colorName
-      ? `Halo Admin Blankshirt Malang, saya tertarik dengan stok kaos warna *${colorName}*. Apakah ready stock?`
-      : "Halo Admin Blankshirt Malang, saya ingin melihat katalog lengkap 30+ pilihan warna kain kaos.";
-    return `https://wa.me/628980080309?text=${encodeURIComponent(text)}`;
   };
 
   const currentSizes = activeTab === "reguler" ? regularSizes : oversizedSizes;
