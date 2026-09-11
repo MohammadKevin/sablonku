@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AiChatPopup from "@/components/AiChatPopup";
 import {
   MessageCircle,
   MessageSquare,
@@ -39,9 +40,6 @@ import {
   faShop,
 } from "@fortawesome/free-solid-svg-icons";
 
-// ==========================================
-// DATA: PRODUCTS & SPECS
-// ==========================================
 interface ProductSpec {
   id: string;
   name: string;
@@ -353,6 +351,15 @@ export default function Home() {
   // FAQ state
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
+  // AI Chat Popup state
+  const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
+  const [chatInitialTopic, setChatInitialTopic] = useState<string | null>(null);
+
+  const openChatWithTopic = (topic?: string) => {
+    setChatInitialTopic(topic || null);
+    setIsChatOpen(true);
+  };
+
   // Calculations
   const calculatedPrice = useMemo(() => {
     const tier = estQty < 12 ? "single" : estQty < 50 ? "dozen" : "bulk";
@@ -452,7 +459,7 @@ export default function Home() {
               </a>
             </div>
             <div className="mt-12 max-w-4xl mx-auto">
-              <div className="rounded-2xl border border-zinc-200/90 bg-white p-3 sm:p-5 shadow-xs grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-zinc-100">
+              <div className="rounded-2xl border border-zinc-200/90 bg-white p-3 sm:p-5 shadow-xs grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-zinc-100 mb-12">
                 <div className="flex items-center justify-center gap-3 py-2 sm:py-1 px-3 text-left">
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100">
                     <FontAwesomeIcon icon={faShieldHalved} className="h-4 w-4" />
@@ -792,15 +799,15 @@ export default function Home() {
                       </strong>
                     </span>
                   </div>
-                  <a
-                    href={waColorLink(selectedColor.name)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-bold text-emerald-700 hover:text-emerald-800 underline flex items-center gap-1"
+                  <button
+                    type="button"
+                    onClick={() => openChatWithTopic(selectedColor.name)}
+                    className="text-xs font-bold text-emerald-700 hover:text-emerald-800 underline flex items-center gap-1.5 cursor-pointer"
                   >
-                    <span>Cek Stok Warna Ini di WhatsApp</span>
+                    <MessageCircle className="h-3.5 w-3.5" />
+                    <span>Cek Stok ({selectedColor.name}) di Chat AI</span>
                     <ArrowRight className="h-3.5 w-3.5" />
-                  </a>
+                  </button>
                 </div>
               )}
 
@@ -809,15 +816,15 @@ export default function Home() {
                   Mau warna lain? Blankshirt Malang menyediakan puluhan pilihan warna kain roll
                   lainnya.
                 </p>
-                <a
-                  href={waColorLink()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 hover:text-emerald-700 group transition-colors"
+                <button
+                  type="button"
+                  onClick={() => openChatWithTopic("katalog 30 warna")}
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 hover:text-emerald-700 group transition-colors cursor-pointer"
                 >
-                  <span>Lihat Katalog Warna Lengkap di WhatsApp</span>
+                  <MessageCircle className="h-3.5 w-3.5" />
+                  <span>Tanya Katalog Warna di Chat AI</span>
                   <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -1549,26 +1556,32 @@ export default function Home() {
       {/* 12. FOOTER */}
       <Footer />
 
-      {/* 13. FLOATING WHATSAPP & STICKY MOBILE CTA */}
-      <aside aria-label="WhatsApp Contact" className="fixed bottom-6 right-6 z-50 group">
+      {/* 13. FLOATING AI CHAT WIDGET */}
+      <aside aria-label="CS Assistant" className="fixed bottom-6 right-6 z-40 group">
         <div className="absolute bottom-full right-0 mb-3 hidden sm:group-hover:flex items-center gap-2 rounded-xl bg-zinc-900 px-3.5 py-2 text-xs font-medium text-white shadow-xl whitespace-nowrap animate-in fade-in slide-in-from-bottom-2 duration-150 pointer-events-none">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
           </span>
-          <span>Chat CS Blankshirt Malang (Online)</span>
+          <span>Tanya CS AI Blankshirt (Online)</span>
         </div>
 
-        <a
-          href="https://wa.me/628980080309?text=Halo%20Admin%20Blankshirt%20Malang,%20saya%20ingin%20tanya%20stok%20kaos%20polos%20dan%20sablon%20custom."
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Hubungi kami melalui WhatsApp"
-          className="whatsapp-pulse-btn flex h-13 w-13 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg hover:scale-105 active:scale-95 transition-transform"
+        <button
+          type="button"
+          onClick={() => openChatWithTopic()}
+          aria-label="Buka Chat CS AI Blankshirt Malang"
+          className="whatsapp-pulse-btn flex h-13 w-13 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg hover:scale-105 active:scale-95 transition-transform cursor-pointer"
         >
-          <MessageCircle className="h-7 w-7 fill-white text-[#25D366]" />
-        </a>
+          <MessageCircle className="h-7 w-7 text-white" />
+        </button>
       </aside>
+
+      {/* 14. AI CHAT POPUP MODAL */}
+      <AiChatPopup
+        isOpen={isChatOpen}
+        onClose={() => setIsChatOpen(false)}
+        initialTopic={chatInitialTopic}
+      />
     </div>
   );
 }

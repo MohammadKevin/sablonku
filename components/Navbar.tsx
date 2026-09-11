@@ -33,7 +33,7 @@ export default function Navbar() {
             />
           </div>
           <div className="flex flex-col">
-            <span className="font-brand font-black tracking-wider text-zinc-900 text-sm sm:text-base leading-tight">
+            <span className="font-raleway font-black tracking-wider text-zinc-900 text-sm sm:text-base leading-tight">
               BLANKSHIRT MALANG
             </span>
           </div>
