@@ -416,7 +416,7 @@ export default function Home() {
         <section className="relative overflow-hidden bg-white pt-10 pb-16 md:pt-16 md:pb-20 border-b border-zinc-100">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
 
-            <h1 className="font-raleway text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-900 leading-[1.2] max-w-4xl mx-auto pt-8">
+            <h1 className="font-raleway text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-900 leading-[1.2] max-w-4xl mx-auto pt-19">
               Pusat Kaos Polos &amp; Sablon Custom Terlengkap di Malang <br className="hidden sm:inline" />
               <span className="font-semibold text-emerald-700">Blankshirt Malang</span>
             </h1>
@@ -426,9 +426,7 @@ export default function Home() {
               sablon custom di Kota Malang. Kualitas premium, jahitan rapi standar distro, tanpa
               minimum order hingga ribuan pcs dengan garansi kepuasan.
             </p>
-
-            {/* Dual CTA Buttons */}
-            <div className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-lg mx-auto">
+            <div className="mt-20 flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-lg mx-auto">
               <a
                 href="https://wa.me/628980080309?text=Halo%20Admin%20Blankshirt%20Malang,%20saya%20ingin%20order%20kaos%20polos%20dan%20sablon%20custom."
                 target="_blank"
@@ -448,50 +446,95 @@ export default function Home() {
               </a>
             </div>
 
-            {/* 3 Trust Cards Highlight Bar */}
-            <div className="mt-12 max-w-4xl mx-auto">
-              <div className="rounded-2xl border border-zinc-200/90 bg-white p-3 sm:p-5 shadow-xs grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-zinc-100">
-                <div className="flex items-center justify-center gap-3 py-2 sm:py-1 px-3 text-left">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100">
-                    <ShieldCheck className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-zinc-900 leading-tight">
-                      100% Katun Combed Asli
-                    </h4>
-                    <p className="text-[11px] text-zinc-500 leading-tight mt-0.5">
-                      Combed 20s/24s/30s adem &amp; lembut
-                    </p>
-                  </div>
-                </div>
+            {/* Running Infinite Marquee Trust Ticker */}
+            <div className="mt-12 w-full max-w-5xl mx-auto overflow-hidden relative">
+              {/* Left & Right Smooth Fade Overlays */}
+              <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-10 sm:w-20 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
+              <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-10 sm:w-20 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
 
-                <div className="flex items-center justify-center gap-3 py-2 sm:py-1 px-3 text-left">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100">
-                    <Sparkles className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-zinc-900 leading-tight">
-                      Grosir &amp; Eceran Satuan/Partai
-                    </h4>
-                    <p className="text-[11px] text-zinc-500 leading-tight mt-0.5">
-                      Tanpa batas order hingga ribuan pcs
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-center gap-3 py-2 sm:py-1 px-3 text-left">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100">
-                    <MapPin className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-zinc-900 leading-tight">
-                      Workshop &amp; Store di Malang
-                    </h4>
-                    <p className="text-[11px] text-zinc-500 leading-tight mt-0.5">
-                      Pilih bahan &amp; sample langsung di store
-                    </p>
-                  </div>
-                </div>
+              <div className="flex animate-marquee-left gap-3.5 py-1">
+                {[
+                  {
+                    icon: ShieldCheck,
+                    title: "100% Katun Combed Asli",
+                    desc: "Combed 20s/24s/30s adem & lembut",
+                  },
+                  {
+                    icon: Sparkles,
+                    title: "Grosir & Eceran Satuan/Partai",
+                    desc: "Tanpa batas order hingga ribuan pcs",
+                  },
+                  {
+                    icon: MapPin,
+                    title: "Workshop & Store di Malang",
+                    desc: "Pilih bahan & sample langsung di store",
+                  },
+                  {
+                    icon: Printer,
+                    title: "Sablon DTF & Plastisol Curing",
+                    desc: "Cetak tajam full color & tahan lama",
+                  },
+                  {
+                    icon: FileCheck,
+                    title: "Gratis Digital Mockup 3D",
+                    desc: "Preview visual sebelum naik cetak",
+                  },
+                  {
+                    icon: Truck,
+                    title: "Kirim Cepat Seluruh Indonesia",
+                    desc: "Instant GoSend / Grab & Kargo",
+                  },
+                  {
+                    icon: ShieldCheck,
+                    title: "100% Katun Combed Asli",
+                    desc: "Combed 20s/24s/30s adem & lembut",
+                  },
+                  {
+                    icon: Sparkles,
+                    title: "Grosir & Eceran Satuan/Partai",
+                    desc: "Tanpa batas order hingga ribuan pcs",
+                  },
+                  {
+                    icon: MapPin,
+                    title: "Workshop & Store di Malang",
+                    desc: "Pilih bahan & sample langsung di store",
+                  },
+                  {
+                    icon: Printer,
+                    title: "Sablon DTF & Plastisol Curing",
+                    desc: "Cetak tajam full color & tahan lama",
+                  },
+                  {
+                    icon: FileCheck,
+                    title: "Gratis Digital Mockup 3D",
+                    desc: "Preview visual sebelum naik cetak",
+                  },
+                  {
+                    icon: Truck,
+                    title: "Kirim Cepat Seluruh Indonesia",
+                    desc: "Instant GoSend / Grab & Kargo",
+                  },
+                ].map((item, idx) => {
+                  const Icon = item.icon;
+                  return (
+                    <div
+                      key={idx}
+                      className="flex items-center gap-3 rounded-2xl border border-zinc-200/90 bg-white/95 px-4 py-2.5 shadow-xs hover:border-emerald-400 transition-colors shrink-0"
+                    >
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100">
+                        <Icon className="h-4 w-4" />
+                      </div>
+                      <div className="text-left">
+                        <h4 className="text-xs sm:text-sm font-bold text-zinc-900 leading-tight whitespace-nowrap">
+                          {item.title}
+                        </h4>
+                        <p className="text-[11px] text-zinc-500 leading-tight mt-0.5 whitespace-nowrap">
+                          {item.desc}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>

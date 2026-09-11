@@ -50,3 +50,23 @@
 .whatsapp-pulse-btn {
   animation: custom-pulse-ring 2.4s infinite cubic-bezier(0.45, 0, 0.55, 1);
 }
+
+/* Infinite Marquee Running Text */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 25s linear infinite;
+}
+
+.animate-marquee-left:hover {
+  animation-play-state: paused;
+}
