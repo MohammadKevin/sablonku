@@ -416,12 +416,12 @@ export default function Home() {
         <section className="relative overflow-hidden bg-white pt-10 pb-16 md:pt-16 md:pb-20 border-b border-zinc-100">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
 
-            <h1 className="font-raleway text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-zinc-900 leading-[1.15] max-w-4xl mx-auto pt-5">
-              Pusat Kaos Polos &amp; Sablon Custom Terlengkap di Malang - Blankshirt Malang
+            <h1 className="font-raleway text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-900 leading-[1.2] max-w-4xl mx-auto pt">
+              Pusat Kaos Polos &amp; Sablon Custom Terlengkap di Malang <br className="hidden sm:inline" />
+              <span className="font-semibold text-emerald-700">Blankshirt Malang</span>
             </h1>
 
-            {/* Subtitle */}
-            <p className="mt-5 text-base sm:text-lg text-zinc-600 leading-relaxed max-w-3xl mx-auto font-normal">
+            <p className="mt-5 text-sm sm:text-base md:text-lg text-zinc-600 leading-relaxed max-w-3xl mx-auto font-normal">
               Pusat grosir &amp; eceran Cotton Combed (20s/24s/30s), kaos polos distro, dan jasa
               sablon custom di Kota Malang. Kualitas premium, jahitan rapi standar distro, tanpa
               minimum order hingga ribuan pcs dengan garansi kepuasan.
