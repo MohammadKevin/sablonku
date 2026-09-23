@@ -18,9 +18,9 @@ Sablonku provides an online portal for custom t-shirt printing, apparel design p
 ---
 
 ## ✨ Key Features
-- ⚡ **Interactive pricing calculator based on fabric type, screen print colors, and order quantity**: Interactive pricing calculator based on fabric type, screen print colors, and order quantity
-- ⚡ **Portfolio gallery of completed production runs**: Portfolio gallery of completed production runs
-- ⚡ **Order inquiry form with artwork upload capability**: Order inquiry form with artwork upload capability
+- Interactive pricing calculator based on fabric type, screen print colors, and order quantity
+- Portfolio gallery of completed production runs
+- Order inquiry form with artwork upload capability
 
 ---
 
