@@ -12,26 +12,26 @@
 
 ---
 
-## 📌 Overview
+## Overview
 Sablonku provides an online portal for custom t-shirt printing, apparel design previews, price estimation based on quantity, and bulk order management.
 
 ---
 
-## ✨ Key Features
+## Key Features
 - Interactive pricing calculator based on fabric type, screen print colors, and order quantity
 - Portfolio gallery of completed production runs
 - Order inquiry form with artwork upload capability
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 - **Framework**: Next.js
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS, FontAwesome Icons
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 ```text
 sablonku/
 ├── app/
@@ -41,7 +41,7 @@ sablonku/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 Make sure you have the required runtimes and tools installed on your machine:
@@ -58,7 +58,7 @@ npm run dev
 
 ---
 
-## 👤 Author
+## Author
 **Mohammad Kevin Arif Rudianto**
 - **GitHub:** [@MohammadKevin](https://github.com/MohammadKevin)
 - **Portfolio:** [portfolio-mohammadkevin.vercel.app](https://portfolio-mohammadkevin.vercel.app)
@@ -67,9 +67,9 @@ npm run dev
 
 ---
 
-## 📄 License
+## License
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
 <div align="center">
-⭐️ If you found this repository useful, please consider giving it a star!
+If you found this repository useful, please consider giving it a star!
 </div>
